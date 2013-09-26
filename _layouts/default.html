@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html ng-app="ctsmApp">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CTSM - {{ page.title }}</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/css/main.css">
+
+  <script src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/0.3.0/angularfire.min.js"></script>
+
+  <script src="/js/main.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <div class="row" id="ctsm-header">
+      <div class="col-md-8">
+        <img src="/images/CTSM-logo.gif">
+      </div>
+      <div class="col-md-4">
+        <br>
+        <div class="input-group">
+          <input type="text" class="form-control">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Search</button>
+          </span>
+        </div>
+      </div>
+    </div><!-- /ctsm-header row -->
+
+    <nav class="navbar navbar-default" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li class="dropdown">
+            <a href="/about" class="dropdown-toggle" data-toggle="dropdown">About CTSM <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/about">About CTSM</a></li>
+              <li><a href="/about/risk-analysis">Risk Analysis</a></li>
+              <li><a href="/about/reliability-analysis">Reliability Analysis</a></li>
+              <li><a href="/about/uncertainty-modeling">Uncertainty Modeling</a></li>
+              <li><a href="/about/intelligent-systems">Intelligent Systems</a></li>
+              <li><a href="/about/homeland-security">Homeland Security</a></li>
+              <li><a href="/about/graduates">Graduates</a></li>
+            </ul>
+          </li>
+          <li><a href="/people">People</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Publications</a></li>
+          <li><a href="#">Visitors</a></li>
+
+        </ul>
+        <form class="navbar-form navbar-left pull-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </nav>
+
+{{ content }}
+
+<div class="row" id="ctsm-footer">
+<div class="col-md-12">
+
+<p class="text-center"><strong>Center for Technology and Systems Management</strong><br>
+<small>Department of Civil and Environmental Engineering<br>
+University of Maryland, College Park, MD 20742<br>
+P: (301) 405-1956 | F: (301) 405-2585 | E: ba@umd.edu</small></p>
+</div>
+
+</div><!-- /footer -->
+
+  </div><!-- /container -->
+</body>
+</html>
