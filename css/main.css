@@ -28,6 +28,8 @@ nav {
 .content {
   background: #f6f3ee;
   background: #eee;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 #ctsm-footer {
@@ -37,5 +39,12 @@ nav {
 
 #ctsm-footer p {
   color: #fff;
+}
+
+.tab-content {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-top: none;
+  padding: 1em;
 }
 
