@@ -50,6 +50,19 @@ function AdminCtrl($scope, angularFireCollection, angularFireAuth) {
    		console.log(InkBlobs[0].key);
 		});
 	}
+	$scope.aboutPicPick = function() {
+		filepicker.pickAndStore({mimetype:"image/*"},
+  	{location:"S3"}, function(InkBlobs){
+   		$scope.newAbout.photo='https://s3-us-west-2.amazonaws.com/ctsmfiles/'+InkBlobs[0].key;
+		});
+	};
+	$scope.changeAboutPicPick = function(index) {
+		filepicker.pickAndStore({mimetype:"image/*"},
+  	{location:"S3"}, function(InkBlobs){
+   		$scope.abouts[index].photo='https://s3-us-west-2.amazonaws.com/ctsmfiles/'+InkBlobs[0].key;
+   		console.log(InkBlobs[0].key);
+		});
+	}
 	$scope.pubPicPick = function() {
 		filepicker.pickAndStore({mimetype:"image/*"},
   	{location:"S3"}, function(InkBlobs){

@@ -14,6 +14,7 @@
           <label>Content</label>
           <textarea class="form-control" ui-tinymce ng-model='newAbout.content'></textarea>
         </div>
+        <input class="btn btn-primary" type='button' ng-click='aboutPicPick()' value='Pick a Photo' />
         <input type='submit' class="btn btn-success" value='Add' />
         <button class="btn btn-default" ng-click="newabout = false; newAbout = {}">Cancel</button>
       </form>
@@ -24,12 +25,15 @@
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-
+        <img ng-src="[[about.photo]]" height="100%" width="80px" style="float:left; margin: 5px;"/>
           <div ng-hide='editAbout'><strong>Title:</strong> [[about.title]]</div>
           <div ng-hide='editAbout'><strong>Content:</strong><div ng-bind-html-unsafe="about.content"></div></div>
 
 
           <form ng-show='editAbout' role='form'>
+            <div class="form-group">
+              <button class='btn btn-primary' ng-click='changeAboutPicPick($index)'>Change Photo</button>
+            </div>
             <div class="form-group">
               <label>Title</label>
               <input type='text' class="form-control" ng-model='about.title' />
