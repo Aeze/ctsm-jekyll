@@ -1,0 +1,82 @@
+---
+layout: default
+title: Administrative Control
+---
+<script>
+  filepicker.setKey('AecwKh6jGQ5ulMtmmBCiCz');
+</script>
+
+<div ng-controller="AdminCtrl">
+
+  <div ng-show="user">
+  </div>
+
+  <div ng-hide="user">
+    <br><br><br><br>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="container well">
+          <h3>Please Log In</h3>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label class="sr-only" for="InputEmail2">Email address</label>
+              <input type='email' class="form-control" ng-model='login.email' placeholder="Enter email"/>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="InputPassword2">Password</label>
+              <input type='password' class="form-control" ng-model='login.password' placeholder="Password"/>
+            </div>
+            <a class="btn btn-default" ng-click="login()">Login</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-show='user'>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="pull-right">[[user.email]] | <a ng-click="logout()" onClick="window.location.reload()">Logout</a></span>
+
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#people" data-toggle="tab">People</a></li>
+            <li><a href="#about" data-toggle="tab">About</a></li>
+            <li><a href="#courses" data-toggle="tab">Courses</a></li>
+            <li><a href='#publications' data-toggle='tab'>Publications</a></li>
+            <li><a href='#projects' data-toggle='tab'>Projects</a></li>
+            <li><a href='#news' data-toggle='tab'>News</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="people">
+            	<div people-admin></div>
+            </div>
+
+
+            <div class="tab-pane" id="about">
+            	<div about-admin></div>
+            </div>
+
+            <div class="tab-pane" id="courses">
+              <div courses-admin></div>
+            </div>
+
+            <div class='tab-pane' id='publications'>
+              <div publications-admin></div>
+            </div>
+
+            <div class='tab-pane' id='projects'>
+              <div projects-admin></div>
+            </div>
+
+            <div class='tab-pane' id='news'>
+              <div news-admin></div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

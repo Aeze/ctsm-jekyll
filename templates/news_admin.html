@@ -1,0 +1,64 @@
+<div>
+  <div class="row">
+    <div class="col-md-12">
+
+
+      <br><button class='btn btn-primary' ng-click='newcourse = true' ng-hide='newcourse'>Add New News</button>
+
+      <form ng-show='newcourse' role="form" ng-submit='news.add(newNews); newNews = {}'>
+        <div class="form-group">
+          <label>Title</label>
+          <input type='text' class="form-control" ng-model='newNews.title' />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control" ng-model='newNews.description'></textarea>
+        </div>
+        <div class='form-group'>
+          <label>Link</label>
+          <input type='text' class='form-control' ng-model='newNews.link' />
+        </div>
+        <input type='submit' class="btn btn-success" value='Add' />
+        <button class="btn btn-default" ng-click="newcourse = false; newNews = {}">Cancel</button>
+      </form>
+
+      <br><br>
+    </div></div>
+    <div ng-repeat="new in news">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+          <div ng-hide='editCourse'><strong>Title:</strong> <a href='[[new.link]]'>[[new.title]]</a></div>
+          <div ng-hide='editCourse'><strong>Description:</strong><div ng-bind="new.description"></div></div>
+
+          <form ng-show='editCourse' role='form'>
+            <div class="form-group">
+              <label>Title</label>
+              <input type='text' class="form-control" ng-model='new.title' />
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea type='text' class="form-control" ng-model='new.description'></textarea>
+            </div>
+            <div class='form-group'>
+              <label>Link</label>
+              <input type='text' class='form-control' ng-model='new.link' />
+            </div>
+            <div class="form-group">
+              <button ng-show='editCourse' class='btn btn-primary' ng-click='editCourse=false; news.update(new)'>Update</button>
+              <button class="btn btn-default" ng-click="editCourse = false">Cancel</button>
+            </div>
+          </form>
+
+          <button ng-hide='editCourse' class='btn btn-primary' ng-click='editCourse=true'>Edit Course</button>
+          <button class='btn btn-danger' ng-hide='removeCourse' ng-click='removeCourse=true'>Remove</button>
+          <div class='alert alert-danger' ng-show='removeCourse'>
+            Are you sure you want to remove this news?
+            <button class='btn btn-primary' ng-click='news.remove(new)'>Yes</button>
+            <button class='btn btn-primary' ng-click='removeCourse=false'>No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

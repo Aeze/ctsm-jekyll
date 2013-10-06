@@ -1,0 +1,80 @@
+<div>
+  <div class="row">
+    <div class="col-md-12">
+
+
+    <br><button class='btn btn-primary' ng-click='newpublication = true' ng-hide='newpublication'>Add New Publication</button>
+
+      <form ng-show='newpublication' role="form" ng-submit='publications.add(newPublication); newPublication = {}'>
+        <div class="form-group">
+          <label>Citation</label>
+          <textarea class="form-control" ui-tinymce ng-model='newPublication.citation'></textarea>
+        </div>
+        <div class='form-group'>
+          <label>Publication Type</label>
+          <select ng-model='newPublication.type'>
+            <option value=''>-- Choose Publication Type --</option>
+            <option value='Textbooks'>Textbooks</option>
+            <option value='Journal Articles'>Journal Articles</option>
+            <option value='Conferences'>Conferences</option>
+            <option value='Technical Reports'>Technical Reports</option>
+          </select>
+        </div>
+        <input class="btn btn-primary" type='button' ng-click='publicationPick()' value='Pick a File' />
+        <input class="btn btn-primary" type='button' ng-click='pubPicPick()' value='Pick a Picture' />
+        <input type='submit' class="btn btn-success" value='Add' />
+        <button class="btn btn-default" ng-click="newpublication = false; newPublication = {}">Cancel</button>
+      </form>
+
+      <br><br>
+    </div></div>
+    <button class='btn btn-default' ng-click="pubType = 'Textbooks'">Textbooks</button>
+    <button class='btn btn-default' ng-click="pubType = 'Journal Articles'">Journal Articles</button>
+    <button class='btn btn-default' ng-click="pubType = 'Conferences'">Conferences</button>
+    <button class='btn btn-default' ng-click="pubType = 'Technical Reports'">Technical Reports</button>
+    <div ng-repeat="pub in publications | filter:pubType" class="publications">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+          <img ng-src="[[pub.photo]]" height="100%" width="80px" style="float:left; margin: 5px;"/>
+          <div ng-hide='editPublication'><div ng-bind-html-unsafe="pub.citation"></div></div>
+          <div ng-hide='editPublication'><a href='[[pub.article]]'>PDF</a></div>
+
+
+          <form ng-show='editPublication' role='form'>
+            <div class="form-group">
+              <button class='btn btn-primary' ng-click='changePubPicPick($index)'>Change Picture</button>
+            </div>
+            <div class="form-group">
+              <textarea type='text' class="form-control" ui-tinymce ng-model='pub.citation'></textarea>
+            </div>
+            <div class='form-group'>
+            <select ng-model='pub.type'>
+                <option value=''>-- Choose Publication Type --</option>
+                <option value='Textbooks'>Textbooks</option>
+                <option value='Journal Articles'>Journal Articles</option>
+                <option value='Conferences'>Conferences</option>
+                <option value='Technical Reports'>Technical Reports</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button class='btn btn-primary' ng-click='changePublication($index)'>Change File</button>
+            </div>
+            <div class="form-group">
+              <button ng-show='editPublication' class='btn btn-primary' ng-click='editPublication=false; publications.update(pub)'>Update</button>
+              <button class="btn btn-default" ng-click="editPublication = false">Cancel</button>
+            </div>
+          </form>
+
+          <button ng-hide='editPublication' class='btn btn-primary' ng-click='editPublication=true'>Edit Info</button>
+          <button class='btn btn-danger' ng-hide='removePublication' ng-click='removePublication=true'>Remove</button>
+          <div class='alert alert-danger' ng-show='removePublication'>
+            Are you sure you want to remove this publication?
+            <button class='btn btn-primary' ng-click='publications.remove(pub)'>Yes</button>
+            <button class='btn btn-primary' ng-click='removePublication=false'>No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
