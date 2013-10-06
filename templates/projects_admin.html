@@ -5,7 +5,7 @@
 
       <br><button class='btn btn-primary' ng-click='newpublication = true' ng-hide='newpublication'>Add New Project</button>
 
-      <form ng-show='newpublication' role="form" ng-submit='projects.add(newProject); newProject = {}'>
+      <form ng-show='newpublication' role="form">
         <div class="form-group">
           <label>Project Title</label>
           <input type='text' class="form-control" ng-model='newProject.title' />
@@ -15,7 +15,7 @@
           <textarea class="form-control" ui-tinymce ng-model='newProject.content'></textarea>
         </div>
         <input class="btn btn-primary" type='button' ng-click='projectPicPick()' value='Pick a Picture' />
-        <input type='submit' class="btn btn-success" value='Add' />
+        <input type='submit' class="btn btn-success" value='Add' ng-click='projects.add(newProject); newProject = {}; newpublication=false' />
         <button class="btn btn-default" ng-click="newpublication = false; newProject = {}">Cancel</button>
       </form>
 

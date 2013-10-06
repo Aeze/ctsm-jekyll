@@ -5,7 +5,7 @@
 
     <br><button class='btn btn-primary' ng-click='newpublication = true' ng-hide='newpublication'>Add New Publication</button>
 
-      <form ng-show='newpublication' role="form" ng-submit='publications.add(newPublication); newPublication = {}'>
+      <form ng-show='newpublication' role="form">
         <div class="form-group">
           <label>Citation</label>
           <textarea class="form-control" ui-tinymce ng-model='newPublication.citation'></textarea>
@@ -22,7 +22,7 @@
         </div>
         <input class="btn btn-primary" type='button' ng-click='publicationPick()' value='Pick a File' />
         <input class="btn btn-primary" type='button' ng-click='pubPicPick()' value='Pick a Picture' />
-        <input type='submit' class="btn btn-success" value='Add' />
+        <input type='submit' class="btn btn-success" value='Add' ng-click='publications.add(newPublication); newPublication = {}; newpublication=false' />
         <button class="btn btn-default" ng-click="newpublication = false; newPublication = {}">Cancel</button>
       </form>
 
