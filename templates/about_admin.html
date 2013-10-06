@@ -3,7 +3,7 @@
     <div class="col-md-12">
 
 
-      <br><button class='btn btn-primary' ng-click='newabout = true' ng-hide='newabout'>Add New About</button>
+      <br><button class='btn btn-primary' ng-click='newabout = true' ng-hide='newabout'><i class="icon-plus-sign"></i></button>
 
       <form ng-show='newabout' role="form" ng-submit='abouts.add(newAbout); newAbout = {}'>
         <div class="form-group">
@@ -52,6 +52,6 @@
             <button class='btn btn-primary' ng-click='removeAbout=false'>No</button>
           </div>
         </div>
-      </div>
+      </div><hr>
     </div>
   </div>
