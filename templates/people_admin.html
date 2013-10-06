@@ -46,7 +46,10 @@
 
           <img ng-src="[[person.photo]]" height="100%" width="80px" style="float:left; margin: 5px;"/>
           <div ng-hide='editPerson'><strong>Name:</strong> [[person.name]]</div>
-          <div ng-hide='editPerson'><strong>Description:</strong> [[person.description]]</div>
+          <div ng-hide='editPerson'><strong>Title:</strong> [[person.title]]</div>
+          <div ng-hide='editPerson'><strong>Email:</strong> [[person.email]]</div>
+          <div ng-hide='editPerson'><strong>Number:</strong> [[person.number]]</div>
+          <div ng-hide='editPerson'><strong>Type:</strong> [[person.type]]</div>
 
 
           <form ng-show='editPerson' role='form'>
