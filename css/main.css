@@ -91,3 +91,7 @@ nav {
     color: #555;
   }
 
+.ctsm-well {
+  border-radius: 0;
+  background: #f8f8f8;
+}
