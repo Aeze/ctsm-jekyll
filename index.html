@@ -4,14 +4,7 @@ title: Home
 ---
 
 <div class="row content" ng-controller="NewsController">
-  <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12 well ctsm-well" >
-  <div class="slider">
-    <ul class="slides">
-        <li class="slide"><img src="/images/ctsmbig.jpg"></li>
-        <li class="slide"><img  src="/images/rails.png"></li>
-        <li class="slide"><img src="/images/naval_ship.png"></li>
-    </ul>
-</div>
+  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 well ctsm-well" >
     <h3>CTSM News</h3>
     <div ng-repeat="new in news" >
       <h4 ng-bind="new.title"></h4>
@@ -31,9 +24,3 @@ title: Home
     </div>
   </div>
 </div>
-
-<script>
-    $('.slider').glide({
-        autoplay: 5000,
-    });
-</script>
