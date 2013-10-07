@@ -69,3 +69,25 @@ nav {
   padding: 1em;
 }
 
+
+.ctsm-engineering-news {
+  font-size: 0.8em;
+}
+
+.ctsm-engineering-news hr {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    border-top: 1px #ccc solid;
+  }
+
+.ctsm-engineering-news  a:link {
+    color: #555;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight:600;
+  }
+
+.ctsm-engineering-news a:visited {
+    color: #555;
+  }
+

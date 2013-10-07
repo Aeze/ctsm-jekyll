@@ -4,20 +4,27 @@ title: Home
 ---
 
 <div class="row content">
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
 
-<div ng-controller="NewsController">
-  <div ng-repeat="new in news" >
-    <div class="row" >
-      <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12" >
-        <h4 ng-bind="new.title"></h4>
-        <p ng-bind="new.link"></p>
-        <p ng-bind="new.description"></p>
-        <i style="font-size: 2em;" class="icon-twitter"></i> <i style="font-size: 2em;" class="icon-facebook-sign"></i>
+    <div ng-controller="NewsController">
+      <div class="row" >
+
+        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12" >
+        <h3>CTSM News</h3>
+          <div ng-repeat="new in news" >
+            <h4 ng-bind="new.title"></h4>
+            <p ng-bind="new.link"></p>
+            <p ng-bind="new.description"></p>
+            <i style="font-size: 2em;" class="icon-twitter"></i> <i style="font-size: 2em;" class="icon-facebook-sign"></i>
+          </div>
+        </div>
+        <div class="col-md-3 ctsm-engineering-news" ng-controller='FeedCtrl'>
+          <h4>Engineering News</h4>
+          <div ng-repeat='feed in feeds'>
+            <a href='[[feed.link]]'>[[feed.title]]</a><hr>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-</div>
 </div>
