@@ -35,7 +35,7 @@ nav {
 }
 
 .navbar {
-    margin-bottom: 0;
+  margin-bottom: 0;
   border-radius: 0;
 
 }
@@ -75,21 +75,21 @@ nav {
 }
 
 .ctsm-engineering-news hr {
-    margin-top: 0.2em;
-    margin-bottom: 0.2em;
-    border-top: 1px #ccc solid;
-  }
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  border-top: 1px #ccc solid;
+}
 
 .ctsm-engineering-news  a:link {
-    color: #555;
-    text-decoration: none;
-    font-size: 1em;
-    font-weight:600;
-  }
+  color: #555;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight:600;
+}
 
 .ctsm-engineering-news a:visited {
-    color: #555;
-  }
+  color: #555;
+}
 
 .ctsm-well {
   border-radius: 0;
@@ -97,11 +97,11 @@ nav {
 }
 
 /*
- | ------------------------------------------
- | Glide styles
- | ------------------------------------------
- | Here are slider styles
- |
+| ------------------------------------------
+| Glide styles
+| ------------------------------------------
+| Here are slider styles
+|
 */
 
 .slider {
@@ -111,57 +111,57 @@ nav {
   overflow: hidden;
 }
 
-  .slides {
-    height: 100%;
+.slides {
+  height: 100%;
 
-    /* Simple clear fix */
-    overflow: hidden;
+  /* Simple clear fix */
+  overflow: hidden;
 
-    /**
-     * Here is CSS transitions
-     * responsible for slider animation in modern broswers
-     */
-    -webkit-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-       -moz-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-        -ms-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-         -o-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-            transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
-  }
+/**
+* Here is CSS transitions
+* responsible for slider animation in modern broswers
+*/
+-webkit-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+-moz-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+-ms-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+-o-transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+transition: all 500ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+}
 
-    .slide {
-      height: 100%;
-      float: left;
-      clear: none;
-    }
+.slide {
+  height: 100%;
+  float: left;
+  clear: none;
+  list-style-type: none;
+}
+
+.slider-arrows {}
+
+.slider-arrow {
+  position: absolute;
+  display: block;
+  margin-bottom: -20px;
+  padding: 20px;
+}
+
+.slider-arrow--right { bottom: 50%; right: 30px; }
+.slider-arrow--left { bottom: 50%; left: 30px; }
 
 
-  .slider-arrows {}
+.slider-nav {
+  position: absolute;
+  bottom: 30px;
+}
 
-    .slider-arrow {
-      position: absolute;
-      display: block;
-      margin-bottom: -20px;
-      padding: 20px;
-    }
+.slider-nav__item {
+  width: 12px;
+  height: 12px;
+  float: left;
+  clear: none;
+  display: block;
+  margin: 0 5px;
+  background: #fff;
+}
 
-      .slider-arrow--right { bottom: 50%; right: 30px; }
-      .slider-arrow--left { bottom: 50%; left: 30px; }
-
-
-  .slider-nav {
-    position: absolute;
-    bottom: 30px;
-  }
-
-    .slider-nav__item {
-      width: 12px;
-      height: 12px;
-      float: left;
-      clear: none;
-      display: block;
-      margin: 0 5px;
-      background: #fff;
-    }
-
-        .slider-nav__item:hover { background: #ccc; }
-        .slider-nav__item--current { background: #ccc; }
+.slider-nav__item:hover { background: #ccc; }
+.slider-nav__item--current { background: #ccc; }
