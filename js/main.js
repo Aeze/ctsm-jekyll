@@ -8,9 +8,14 @@ function PeopleController($scope, angularFire) {
   angularFire(ref, $scope, 'people')
 }
 
-function AboutController($scope, angularFire) {
-	var ref = new Firebase('https://ctsm.firebaseio.com/abouts');
-	angularFire(ref, $scope, 'abouts');
+function NewsController($scope, angularFire) {
+  var ref = new Firebase('https://ctsm.firebaseio.com/news');
+  angularFire(ref, $scope, 'news')
+}
+
+function AboutsController($scope, angularFire) {
+  var ref = new Firebase('https://ctsm.firebaseio.com/abouts');
+  angularFire(ref, $scope, 'abouts')
 }
 
 function AdminCtrl($scope, angularFireCollection, angularFireAuth) {

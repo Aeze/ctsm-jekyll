@@ -1,16 +1,31 @@
 body {
-  background: #ccc;
+  background: #bbb;
+}
+
+.container {
+  margin-top:1em;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  margin-bottom: 1em;
 }
 
 #ctsm-header {
   background: url('/images/naval_ship.png') right bottom no-repeat, url("/images/header-pattern.jpg");
   padding: 1em;
   padding-bottom: 2em;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
 #ctsm-header img {
   height: 106px;
   width: 260px;
+}
+
+#umd-logo {
+  height: 87px !important;
+  width: 101px !important;
+  float: right;
 }
 
 nav {
@@ -35,14 +50,20 @@ nav {
 #ctsm-footer {
   padding: 1em;
   background: #206898;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 #ctsm-footer p {
   color: #fff;
 }
 
+.nav-tabs>li.active>a {
+  background: #f8f8f8;
+}
+
 .tab-content {
-  background: #fff;
+  background: #f8f8f8;
   border: 1px solid #ddd;
   border-top: none;
   padding: 1em;

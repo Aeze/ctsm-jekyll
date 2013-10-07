@@ -13,10 +13,13 @@ title: Meet Us
       </div>
       <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12" >
         <h4 ng-bind="person.name"></h4>
-        <p ng-bind="person.description"></p>
+        <p>
+        <span ng-bind="person.title"></span><br>
+        <span ng-bind="person.email"></span><br>
+        <span ng-bind="person.number"></span></p>
       </div>
     </div>
-    <hr class="dotted">
+    <hr>
   </div>
 </div>
 
