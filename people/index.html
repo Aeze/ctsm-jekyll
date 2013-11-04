@@ -6,20 +6,23 @@ title: Meet Us
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 well ctsm-well" >
 
 <div ng-controller="PeopleController">
-  <div ng-repeat="person in people | filter:pubType" >
-    <div class="row" >
-      <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" >
-        <center><img height="100%" width="160px" ng-src="[[person.photo]]"></center>
+  <div ng-repeat="type in personType">
+    <h1>[[type]]</h1>
+    <div ng-repeat="person in people | filter:type">
+      <div class="row" >
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" >
+          <center><img height="100%" width="160px" ng-src="[[person.photo]]"></center>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12" >
+          <h4 ng-bind="person.name"></h4>
+          <p>
+          <span ng-bind="person.title"></span><br>
+          <span ng-bind="person.email"></span><br>
+          <span ng-bind="person.number"></span></p>
+        </div>
       </div>
-      <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12" >
-        <h4 ng-bind="person.name"></h4>
-        <p>
-        <span ng-bind="person.title"></span><br>
-        <span ng-bind="person.email"></span><br>
-        <span ng-bind="person.number"></span></p>
-      </div>
+      <hr>
     </div>
-    <hr>
   </div>
 </div>
 

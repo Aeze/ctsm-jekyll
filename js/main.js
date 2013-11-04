@@ -1,4 +1,4 @@
-var ctsmApp = angular.module("ctsmApp", ["firebase", "ui.tinymce"])
+var ctsmApp = angular.module("ctsmApp", ["firebase", "ui.tinymce", "ui.bootstrap"])
   .config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[').endSymbol(']]');
 });
@@ -17,19 +17,32 @@ var FeedCtrl = function($scope, Feed) {
    });
 }
 
-function PeopleController($scope, angularFire) {
-  var ref = new Firebase('https://ctsm.firebaseio.com/people');
-  angularFire(ref, $scope, 'people')
+function PeopleController($scope, angularFireCollection) {
+  $scope.people = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/people'));
+  $scope.personType=['Directors', 'Associates', 'Graduate Students', 'Undergraduate Students'];
+}
+
+function ProjectsController($scope, angularFireCollection) {
+	$scope.projects = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/projects'));
+}
+
+function CoursesController($scope, angularFireCollection) {
+	$scope.courses = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/courses'));
+}
+
+function PublicationsController($scope, angularFireCollection) {
+	$scope.publications = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/publications'));
+	$scope.pubType=['Textbooks', 'Journal Articles', 'Conferences', 'Technical Reports'];
 }
 
 function NewsController($scope, angularFire) {
   var ref = new Firebase('https://ctsm.firebaseio.com/news');
-  angularFire(ref, $scope, 'news')
+  angularFire(ref, $scope, 'news');
 }
 
 function AboutsController($scope, angularFire) {
   var ref = new Firebase('https://ctsm.firebaseio.com/abouts');
-  angularFire(ref, $scope, 'abouts')
+  angularFire(ref, $scope, 'abouts');
 }
 
 function AdminCtrl($scope, angularFireCollection, angularFireAuth) {

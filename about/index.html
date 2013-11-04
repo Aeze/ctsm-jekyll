@@ -2,21 +2,12 @@
 layout: default
 title: About CTSM
 ---
-<div class="row content">
+<div class="row content" ng-controller='AboutsController'>
   <div class="col-md-12 well ctsm-well">
-    <h3>About CTSM</h3>
-    <p>Founded in 1996, the Center for Technology and Systems Management leverages the expertise of both in-house experts and external associates to offer the following capabilities to its clients:</p>
-
-    <ul>
-      <li>Systems engineering that encompasses functional modeling, technology forecasting and assessment, human and organizational factors, and expert opinion elicitation.</li>
-      <li>Reliability, risk, statistical and decision studies that include risk analysis and management, risk-based regulation development, risk profiling, modeling and analysis, risk-based decision making, multi-criteria ranking and decision making, as well as failure, crash and accident investigation including forensic engineering.</li>
-      <li>Information technology that includes web-based computing, databases, visualization, and simulation.</li>
-      <li>Project management that includes scheduling with network optimization and equilibrium problems.</li>
-      <li>Robotics, automation, control and intelligent systems.</li>
-    </ul>
-
-    <p>The CTSM's strength stems from its ability to develop technologies and creatively utilize sophisticated analytical tools to meet a set of objectives for decision situations relating to various systems, such as defense, homeland security, maritime, infrastructure, facility, health, intelligent and equipment systems. The technologies and systems are further defined in the context of many industries. Using a matrix structure of technologies and systems, several primary thrust areas were identified to constitute primary interests and the scope for the center by capitalizing on existing resources, including the University of Maryland at-large.</p>
-    <p>The products of the CTSM increase efficiency and effectiveness, enhance reliability, reduce failure rates, and support rational decision making for a cost-effective management of risk.</p>
-
+    <div tabset>
+      <div tab ng-repeat='about in abouts' heading='[[about.title]]'>
+        <div ng-bind-html-unsafe="about.content"></div>
+      </div>
+    </div>
   </div>
 </div>

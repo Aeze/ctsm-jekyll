@@ -1,0 +1,13 @@
+---
+layout: default
+title: CTSM Projects
+---
+<div class="row content" ng-controller='ProjectsController'>
+  <div class="col-md-12 well ctsm-well">
+    <div tabset>
+      <div tab ng-repeat='project in projects' heading='[[project.title]]'>
+        <div ng-bind-html-unsafe="project.content"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+---
+layout: default
+title: Visitor's Corner
+---
+<style type="text/css">
+	#map-canvas { height: 300px; width: 430px; }
+	.form-control { width: 150px;}
+	hr { margin-top: 0.15em; margin-bottom: 0.15em; }
+</style>
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCugKnYuw75qGCmx7ANgZWjd03-WVhmxKU&sensor=false&libraries=places">
+</script>
+<script>
+	var directionsDisplay;
+	var directionsService = new google.maps.DirectionsService();
+	var map;
+	var infowindow;
+	var placesList;
+
+	function initialize() {
+	  directionsDisplay = new google.maps.DirectionsRenderer();
+	  var ctsm = new google.maps.LatLng(38.989340376458,-76.937994615934);
+	  var mapOptions = {
+	    zoom:18,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP,
+	    center: ctsm
+	  }
+	  placesList = document.getElementById('places');
+	  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	  var request = {
+	  	location: ctsm,
+	  	radius: 2000,
+	  	types: ['lodging']
+	  };
+	  infowindow = new google.maps.InfoWindow();
+	  var service = new google.maps.places.PlacesService(map);
+	  service.nearbySearch(request, callback);
+	  directionsDisplay.setMap(map);
+	}
+
+	function callback(results, status) {
+		if (status == google.maps.places.PlacesServiceStatus.OK) {
+			for (var i = 0; i < results.length; i++) {
+				createMarker(results[i]);
+			}
+		}
+	}
+
+	function createMarker(place) {
+		var placeLoc = place.geometry.location;
+  	var marker = new google.maps.Marker({
+    	map: map,
+    	position: place.geometry.location
+  	});
+
+	  google.maps.event.addListener(marker, 'click', function() {
+	    infowindow.setContent(place.name);
+	    infowindow.open(map, this);
+	  });
+	  console.log(place.name);
+	  placesList.innerHTML += '<div>' + place.name + '</div><hr>'
+	}
+
+	function calcRoute() {
+	  var start = document.getElementById('start').value;
+	  var end = 'college park, md';
+	  var request = {
+	      origin:start,
+	      destination:end,
+	      travelMode: google.maps.DirectionsTravelMode.DRIVING
+	  };
+	  directionsService.route(request, function(response, status) {
+	    if (status == google.maps.DirectionsStatus.OK) {
+	      directionsDisplay.setDirections(response);
+	    }
+	  });
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+<div class='row content well ctsm-well'>
+	<div class='col-lg-7 col-md-7 col-sm-7 col-xs-7'>
+		<form class='form-inline'>
+			<h2>Directions and Lodging</h2>
+			<b>Start: </b>
+			<input type='text' id='start' class='form-control'>
+			<b>End: </b>
+			<input class='form-control' disabled placeholder='CTSM'>
+			<button class='btn btn-default btn-small' onclick='calcRoute()'>Go</button>
+		</form>
+		<div id="map-canvas"></div>
+	</div>
+	<div class='col-lg-5 col-md-5 col-sm-5 col-xs-5'>
+		<div id="results">
+		  <h3>Nearby Lodging</h3>
+		  <h4 id="places"></h4>
+		</div>
+	</div>
+</div>

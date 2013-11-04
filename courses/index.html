@@ -1,0 +1,12 @@
+---
+layout: default
+title: CTSM Courses
+---
+<div class="row content" ng-controller='CoursesController'>
+  <div class="col-md-12 well ctsm-well">
+    <div ng-repeat="course in courses" >
+		  <a href='[[course.link]]'><h5 ng-bind="course.title"></h5></a>
+		  <p ng-bind="course.description"></p>
+		</div>
+  </div>
+</div>
