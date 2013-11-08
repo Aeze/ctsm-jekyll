@@ -94,6 +94,10 @@ nav {
   font-weight:600;
 }
 
+.personinfo h5 {
+  margin-bottom: 0;
+}
+
 .ctsm-engineering-news a:visited {
   color: #555;
 }

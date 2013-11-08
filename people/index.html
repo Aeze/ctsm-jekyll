@@ -11,12 +11,13 @@ title: Meet Us
     <div class="row" >
     <div ng-repeat="person in people | filter:type">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6" >
-          <img height="100%" width="160px" ng-src="[[person.photo]]" class="img-rounded">
-          <h4 ng-bind="person.name"></h4>
-
-          <span ng-bind="person.title"></span><br>
+          <img height="100%" width="130px" ng-src="[[person.photo]]" class="img-rounded">
+          <address class="personinfo">
+          <h5 ng-bind="person.name"></h5>
+          <em><span ng-bind="person.title"></span></em><br>
           <span ng-bind="person.email"></span><br>
           <span ng-bind="person.number"></span>
+          </address>
         </div>
       </div>
       <hr>

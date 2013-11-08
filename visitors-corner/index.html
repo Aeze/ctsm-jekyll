@@ -3,7 +3,7 @@ layout: default
 title: Visitor's Corner
 ---
 <style type="text/css">
-	#map-canvas { height: 300px; width: 430px; }
+	#map-canvas { height: 400px; width: 100%; }
 	.form-control { width: 150px;}
 	hr { margin-top: 0.15em; margin-bottom: 0.15em; }
 </style>
@@ -21,7 +21,7 @@ title: Visitor's Corner
 	  directionsDisplay = new google.maps.DirectionsRenderer();
 	  var ctsm = new google.maps.LatLng(38.989340376458,-76.937994615934);
 	  var mapOptions = {
-	    zoom:18,
+	    zoom:14,
 	    mapTypeId: google.maps.MapTypeId.ROADMAP,
 	    center: ctsm
 	  }
@@ -79,22 +79,23 @@ title: Visitor's Corner
 	google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
-<div class='row content well ctsm-well'>
-	<div class='col-lg-7 col-md-7 col-sm-7 col-xs-7'>
+
+<div class='row content'>
+	<div class='col-lg-9 col-md-9 col-sm-9 col-xs-9 well ctsm-well'>
 		<form class='form-inline'>
-			<h2>Directions and Lodging</h2>
+			<h3>Directions</h3>
 			<b>Start: </b>
 			<input type='text' id='start' class='form-control'>
 			<b>End: </b>
 			<input class='form-control' disabled placeholder='CTSM'>
 			<button class='btn btn-default btn-small' onclick='calcRoute()'>Go</button>
-		</form>
+		</form><br>
 		<div id="map-canvas"></div>
 	</div>
-	<div class='col-lg-5 col-md-5 col-sm-5 col-xs-5'>
+	<div class='col-lg-3 col-md-3 col-sm-3 col-xs-3 well ctsm-well'>
 		<div id="results">
 		  <h3>Nearby Lodging</h3>
-		  <h4 id="places"></h4>
+		  <p id="places"></p>
 		</div>
 	</div>
 </div>
