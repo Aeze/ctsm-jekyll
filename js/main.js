@@ -35,9 +35,8 @@ function PublicationsController($scope, angularFireCollection) {
 	$scope.pubType=['Textbooks', 'Journal Articles', 'Conferences', 'Technical Reports'];
 }
 
-function NewsController($scope, angularFire) {
-  var ref = new Firebase('https://ctsm.firebaseio.com/news');
-  angularFire(ref, $scope, 'news');
+function NewsController($scope, angularFireCollection) {
+  $scope.news = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/news'));
 }
 
 function AboutsController($scope, angularFire) {
