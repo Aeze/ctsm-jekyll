@@ -17,6 +17,7 @@ title: Administrative Control
       <div class="col-lg-12">
         <div class="well ctsm-well">
           <h3>Please Log In</h3>
+          <div ng-show='invalidCredentials' class='alert alert-danger'>Invalid username/password, please try again</div>
           <form class="form-inline" role="form">
             <div class="form-group">
               <label class="sr-only" for="InputEmail2">Email address</label>
@@ -46,6 +47,7 @@ title: Administrative Control
             <li><a href='#publications' data-toggle='tab'>Publications</a></li>
             <li><a href='#projects' data-toggle='tab'>Projects</a></li>
             <li><a href='#news' data-toggle='tab'>News</a></li>
+            <li><a href='#indexImages' data-toggle='tab'>Images</a></li>
           </ul>
 
           <div class="tab-content">
@@ -72,6 +74,10 @@ title: Administrative Control
 
             <div class='tab-pane' id='news'>
               <div news-admin></div>
+            </div>
+
+            <div class='tab-pane' id='indexImages'>
+              <div index-images-admin></div>
             </div>
           </div>
           </div>

@@ -1,0 +1,52 @@
+<div>
+  <div class="row">
+    <div class="col-md-12">
+
+
+      <br><button class='btn btn-primary' ng-click='newperson = true' ng-hide='newperson'><i class="icon-plus-sign"></i> Add New Image</button>
+
+      <form ng-show='newperson' role="form" ng-submit='indexImages.add(newIndexImage); newIndexImage = {}; newperson = false;'>
+        <div class="form-group">
+          <label>Title</label>
+          <input type='text' class="form-control" ng-model='newIndexImage.title'></textarea>
+        </div>
+        <input class="btn btn-primary" type='button' ng-click='indexImagePick()' value='Pick a Photo' />
+        <input type='submit' class="btn btn-success" value='Add' />
+        <button class="btn btn-default" ng-click="newperson = false; newIndexImage = {}">Cancel</button>
+      </form>
+
+      <br><br>
+    </div></div>
+    <div ng-repeat="image in indexImages" class="person">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+          <img ng-src="[[image.photo]]" height="100%" width="80px" style="float:left; margin: 5px;"/>
+          <div ng-hide='editPerson'><strong>Title:</strong> [[image.title]]</div>
+
+          <form ng-show='editPerson' role='form'>
+            <div class="form-group">
+              <button class='btn btn-primary' ng-click='changeIndexImagePick($index)'>Change Photo</button>
+            </div>
+            <div class="form-group">
+              <label>Title</label>
+              <input type='text' class="form-control" ng-model='image.title'></textarea>
+            </div>
+            <div class="form-group">
+              <button ng-show='editPerson' class='btn btn-primary' ng-click='editPerson=false; indexImages.update(image)'>Update</button>
+              <button class="btn btn-default" ng-click="editPerson = false">Cancel</button>
+            </div>
+          </form>
+
+          <button ng-hide='editPerson' class='btn btn-primary' ng-click='editPerson=true'>Edit Info</button>
+          <button class='btn btn-danger' ng-hide='removePerson' ng-click='removePerson=true'>Remove</button>
+          <div class='alert alert-danger' ng-show='removePerson'>
+            Are you sure you want to remove this image?
+            <button class='btn btn-primary' ng-click='indexImages.remove(image)'>Yes</button>
+            <button class='btn btn-primary' ng-click='removePerson=false'>No</button>
+          </div>
+        </div>
+      </div><br>
+    </div>
+  </div>
