@@ -44,6 +44,10 @@ function AboutsController($scope, angularFire) {
   angularFire(ref, $scope, 'abouts');
 };
 
+function ImagesController($scope, angularFireCollection) {
+	$scope.indexImages = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/indexImages'));
+}
+
 function AdminCtrl($scope, angularFireCollection, angularFireAuth) {
 	$scope.people, $scope.courses, $scope.publications, $scope.abouts, $scope.news, $scope.projects, $scope.indexImages = [];
 	$scope.newPublication = {};

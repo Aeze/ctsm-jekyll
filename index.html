@@ -5,6 +5,13 @@ title: Home
 
 <div class="row content" ng-controller="NewsController">
   <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+    <div ng-controller='ImagesController'>
+      <div carousel interval='3000'>
+        <div slide ng-repeat='image in indexImages'>
+          <img ng-src='[[image.photo]]'>
+        </div>
+      </div>
+    </div>
   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 well ctsm-well" >
     <h4>CTSM News</h4>
     <div ng-repeat="new in news | limitTo:3" >
@@ -17,7 +24,7 @@ title: Home
   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 well ctsm-well" ng-controller="PublicationsController">
   <h4>Publications</h4>
   <div ng-repeat="pub in publications | limitTo:6">
-    <p ng-bind="pub.citation"></p>
+    <p ng-bind-html-unsafe="pub.citation"></p>
   </div>
   </div>
   </div>
