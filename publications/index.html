@@ -9,7 +9,7 @@ title: CTSM Publications
   <div tabset>
     <div tab ng-repeat='type in pubType' heading='[[type]]'>
       <div ng-repeat='pub in publications | filter:type'>
-        <img ng-src="[[pub.photo]]" height="100%" width="80px" style="float:left; margin: 5px;"/>
+        <img ng-src="[[pub.photo]]" height="100%" width="80px" style="float:left; margin: 5px;"/><br>
         <div ng-hide='editPublication'><div ng-bind-html-unsafe="pub.citation"></div></div>
         <div ng-hide='editPublication'><a href='[[pub.article]]'>PDF</a></div>
       </div>
