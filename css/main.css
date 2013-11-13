@@ -3,6 +3,18 @@ body {
   background: #ccc url(http://www.eng.umd.edu/wrapper/body-top-bg-shine.png) repeat-x top left;
 }
 
+p {
+  font-size: 0.9em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h3 {
+  font-size: 1.4em;
+}
+
 .container {
   margin-top:1em;
   border-radius: 5px;
