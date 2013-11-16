@@ -29,11 +29,11 @@
 
       <br><br>
     </div></div>
-    <button class='btn btn-default' ng-click="pubType = 'Textbooks'">Textbooks</button>
-    <button class='btn btn-default' ng-click="pubType = 'Journal Articles'">Journal Articles</button>
-    <button class='btn btn-default' ng-click="pubType = 'Conferences'">Conferences</button>
-    <button class='btn btn-default' ng-click="pubType = 'Technical Reports'">Technical Reports</button>
-    <div ng-repeat="pub in publications | filter:pubType" class="publications">
+    <button class='btn btn-default' ng-click="changePubType('Textbooks')">Textbooks</button>
+    <button class='btn btn-default' ng-click="changePubType('Journal Articles')">Journal Articles</button>
+    <button class='btn btn-default' ng-click="changePubType('Conferences')">Conferences</button>
+    <button class='btn btn-default' ng-click="changePubType('Technical Reports')">Technical Reports</button>
+    <div ng-repeat="pub in filteredPublications = (publications | filter:pubType) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit" class="publications">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -79,4 +79,5 @@
         </div>
       </div>
     </div>
+    <div pagination data-boundary-links="true" data-num-pages="noOfPages" data-current-page="currentPage" max-size="maxSize" class="pagination-small" data-previous-text="&laquo;" data-next-text="&raquo;"></div>
   </div>

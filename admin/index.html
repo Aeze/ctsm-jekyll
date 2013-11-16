@@ -42,19 +42,18 @@ title: Administrative Control
 
           <ul class="nav nav-tabs" id="myTab">
             <li class="active"><a href="#people" data-toggle="tab">People</a></li>
-            <li><a href="#about" data-toggle="tab">About</a></li>
-            <li><a href="#courses" data-toggle="tab">Courses</a></li>
-            <li><a href='#publications' data-toggle='tab'>Publications</a></li>
-            <li><a href='#projects' data-toggle='tab'>Projects</a></li>
-            <li><a href='#news' data-toggle='tab'>News</a></li>
-            <li><a href='#indexImages' data-toggle='tab'>Images</a></li>
+            <li><a href="#about" data-toggle="tab" ng-click='getAboutsData()'>About</a></li>
+            <li><a href="#courses" data-toggle="tab" ng-click='getCoursesData()'>Courses</a></li>
+            <li><a href='#publications' data-toggle='tab' ng-click='getPublicationsData()'>Publications</a></li>
+            <li><a href='#projects' data-toggle='tab' ng-click='getProjectsData()'>Projects</a></li>
+            <li><a href='#news' data-toggle='tab' ng-click='getNewsData()'>News</a></li>
+            <li><a href='#indexImages' data-toggle='tab' ng-click='getImagesData()'>Images</a></li>
           </ul>
 
           <div class="tab-content">
             <div class="tab-pane active" id="people">
             	<div people-admin></div>
             </div>
-
 
             <div class="tab-pane" id="about">
             	<div about-admin></div>

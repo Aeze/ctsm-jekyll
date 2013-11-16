@@ -11,6 +11,16 @@ ctsmApp.factory('Feed', ['$http', function ($http) {
   }
 }]);
 
+ctsmApp.filter('startFrom', function() {
+  return function(input, start) {
+    if(input) {
+      start = +start; //parse to int
+      return input.slice(start);
+    }
+    return [];
+  }
+});
+
 var FeedCtrl = function($scope, Feed) {
   Feed.parseFeed('http://feed.eng.umd.edu/news/feed.xml').then(function (res) {
       $scope.feeds = res.data.responseData.feed.entries;
@@ -31,8 +41,42 @@ function CoursesController($scope, angularFireCollection) {
 };
 
 function PublicationsController($scope, angularFireCollection) {
-  $scope.publications = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/publications'));
-  $scope.pubType=['Textbooks', 'Journal Articles', 'Conferences', 'Technical Reports'];
+  $scope.doneLoading = false;
+  function sortPublications(pubType){
+    var sortedPublications = [];
+    data.forEach(function(childSnapshot){
+      if(childSnapshot.val().type === pubType){
+        sortedPublications.push(childSnapshot.val());
+      }
+    });
+    return sortedPublications;
+  }
+  var pubUrl = new Firebase('https://ctsm.firebaseio.com/publications');
+  pubUrl.once('value', function(dataSnapshot){
+    data = dataSnapshot;
+    dataLength = data.numChildren();
+    publications = angularFireCollection(pubUrl);
+    $scope.textbooks = sortPublications('Textbooks', function(){
+      $scope.noOfPages = Math.ceil($scope.textbooks/$scope.entryLimit);
+    });
+    $scope.journalArticles = sortPublications('Journal Articles');
+    $scope.conferences = sortPublications('Conferences');
+    $scope.technicalReports = sortPublications('Technical Reports');
+    $scope.publications = [$scope.textbooks, $scope.journalArticles, $scope.conferences, $scope.technicalReports];
+    $scope.doneLoading = true;
+  });
+  $scope.getNumOfPages = function(array){
+    $scope.noOfPages = Math.ceil(array.length/$scope.entryLimit);
+  };
+
+  $scope.currentPage = 1; //current page
+  $scope.maxSize = 10; //pagination max size
+  $scope.entryLimit = 10; //max rows for data table
+
+  /* init pagination with $scope.list */
+  $scope.setPage = function(pageNo) {
+    $scope.currentPage = pageNo;
+  };
 };
 
 function NewsController($scope, angularFireCollection) {
@@ -51,23 +95,69 @@ function ImagesController($scope, angularFireCollection) {
 function AdminCtrl($scope, angularFireCollection, angularFireAuth) {
   $scope.people, $scope.courses, $scope.publications, $scope.abouts, $scope.news, $scope.projects, $scope.indexImages = [];
   $scope.newPublication = {};
-  var getData = function() {
-    $scope.people = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/people'));
-    $scope.publications = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/publications'));
-    $scope.abouts = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/abouts'));
-    $scope.news = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/news'));
-    $scope.projects = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/projects'));
-    $scope.courses = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/courses'));
-    $scope.indexImages = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/indexImages'));
+  var getPeopleData = function() {
+  	if(!$scope.people){
+  		$scope.people = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/people'));
+  	}
+  };
+  $scope.getPublicationsData = function() {
+    var count = 0;
+    $scope.pubType = 'Textbooks';
+    $scope.currentPage = 1; //current page
+    $scope.maxSize = 10; //pagination max size
+    $scope.entryLimit = 10; //max rows for data table
+    $scope.setPage = function(pageNo) {
+      $scope.currentPage = pageNo;
+    };
+
+  	if(!$scope.publications){
+  		$scope.publications = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/publications'), function(dataSnapshot){
+        pubData = dataSnapshot;
+      });
+  	}
+    $scope.changePubType = function(pubType){
+      $scope.pubType = pubType;
+      pubData.forEach(function(childSnapshot){
+        if(childSnapshot.val().type === pubType){
+          count++;
+          $scope.noOfPages = Math.ceil(count/$scope.entryLimit);
+        }
+      });
+    }
+  };
+  $scope.getAboutsData = function() {
+  	if(!$scope.abouts){
+  		$scope.abouts = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/abouts'));
+  	}
+  };
+  $scope.getNewsData = function() {
+  	if(!$scope.news){
+  		$scope.news = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/news'));
+  	}
+  };
+  $scope.getProjectsData = function() {
+  	if(!$scope.projects){
+  		$scope.projects = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/projects'));
+  	}
+  };
+  $scope.getCoursesData = function() {
+  	if(!$scope.courses){
+  		$scope.courses = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/courses'));
+  	}
+  };
+  $scope.getImagesData = function() {
+  	if(!$scope.indexImages){
+  		$scope.indexImages = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/indexImages'));
+  	}
   };
   var url = new Firebase('https://ctsm.firebaseio.com/');
   angularFireAuth.initialize(url, {scope: $scope, name: "user"});
+  getPeopleData();
   $scope.login = function() {
     angularFireAuth.login('password', {
       email: $scope.login.email,
       password: $scope.login.password
     });
-    getData();
   };
   $scope.logout = function() {
     angularFireAuth.logout();
@@ -163,7 +253,8 @@ function AdminCtrl($scope, angularFireCollection, angularFireAuth) {
     };
   };
   $scope.updatePublication = function(index) {
-    if($scope.publication.pubType){
+    if($scope.publications[index].pubType){
+      console.log($scope.publications[index]);
       $scope.publications.update($scope.publications[index]);
     } else {
       $scope.tryUpdateAgain = true;
