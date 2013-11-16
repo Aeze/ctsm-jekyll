@@ -1,8 +1,6 @@
 <div>
   <div class="row">
     <div class="col-md-12">
-
-
     <br><button class='btn btn-primary' ng-click='newpublication = true' ng-hide='newpublication'><i class="icon-plus-sign"></i> Add New Publication</button>
 
       <form ng-show='newpublication' role="form">
@@ -64,7 +62,7 @@
               <button class='btn btn-primary' ng-click='changePublication($index)'>Change File</button>
             </div>
             <div class="form-group">
-              <button ng-show='editPublication' class='btn btn-primary' ng-click='editPublication=false; updatePublication($index);'>Update</button>
+              <button ng-show='editPublication' class='btn btn-primary' ng-click='editPublication=false; publications.update(pub)'>Update</button>
               <button class="btn btn-default" ng-click="editPublication = false">Cancel</button>
             </div>
           </form>
