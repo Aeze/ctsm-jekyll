@@ -146,9 +146,7 @@ function AdminCtrl($scope, angularFireCollection, angularFireAuth) {
   	}
   };
   $scope.getImagesData = function() {
-  	if(!$scope.indexImages){
-  		$scope.indexImages = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/indexImages'));
-  	}
+  	$scope.indexImages = angularFireCollection(new Firebase('https://ctsm.firebaseio.com/indexImages'));
   };
   var url = new Firebase('https://ctsm.firebaseio.com/');
   angularFireAuth.initialize(url, {scope: $scope, name: "user"});

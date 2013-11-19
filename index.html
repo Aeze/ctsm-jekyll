@@ -41,7 +41,7 @@ title: Home
     <div class="row" ng-controller="PublicationsController">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <h4>Latest Publications</h4>
-        <div ng-repeat="pub in publications | limitTo:6">
+        <div ng-repeat="pub in journalArticles | limitTo:6">
           <p style="font-size: 1.0em;" ng-bind-html-unsafe="pub.citation"></p><hr>
         </div>
     </div>

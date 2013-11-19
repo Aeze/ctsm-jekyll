@@ -40,7 +40,7 @@
             </div>
             <div class="form-group">
               <label>Content</label>
-              <textarea type='text' class="form-control" ng-model='about.content'></textarea>
+              <textarea type='text' ui-tinymce class="form-control" ng-model='about.content'></textarea>
             </div>
             <div class="form-group">
               <button ng-show='editAbout' class='btn btn-primary' ng-click='editAbout=false; abouts.update(about)'>Update</button>
